@@ -1,0 +1,16 @@
+#!/usr/bin/env python
+
+# SCons 构建入口：把 bytecode_compiler 模块的所有源文件登记进 Godot 构建系统。
+# 注意：Import / env / env_modules 均为 SCons 运行时注入的全局变量。
+# pyright: reportUndefinedVariable = none
+
+Import("env")
+Import("env_modules")
+
+# 克隆一份模块专用环境，避免污染共用环境配置。
+env_bytecode_compiler = env_modules.Clone()
+
+# 根目录源文件需单独登记：SCons 的 `**/*.cpp` 通配符不包含根目录下的文件。
+env_bytecode_compiler.add_source_files(env.modules_sources, "*.cpp")
+# 递归编译本模块子目录下的所有 .cpp 源文件。
+env_bytecode_compiler.add_source_files(env.modules_sources, "**/*.cpp")

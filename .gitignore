@@ -1,0 +1,33 @@
+# Godot 自动生成的文件
+*.gen.*
+.godot/
+
+# Godot 构建签名缓存（增量构建标记）
+.sconsign*.dblite
+
+# 自定义构建脚本
+custom.py
+
+# 生成的编译数据库（VSCode/CLion 智能感知用，本地生成即可）
+compile_commands.json
+
+# 中间目标文件与静态库
+*.o
+*.os
+*.so
+*.obj
+*.bc
+
+# Python 字节码
+__pycache__/
+*.pyc
+
+# IDE 本地配置（保留编译命令白名单，供 IntelliSense 使用）
+.vscode/*
+!.vscode/c_cpp_properties.json
+.idea/
+cmake-build*
+CMakeUserPresets.json
+
+# 通用系统文件
+.DS_Store

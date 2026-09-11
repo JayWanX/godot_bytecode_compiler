@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="BytecodeCompiler" inherits="RefCounted" api_type="core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../doc/class.xsd">
+	<brief_description>	将 GDScript 源码 token 化并打包为二进制字节码，供脚本在运行时加载与执行。</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="compile_from_string">
+			<return type="PackedByteArray" />
+			<param index="0" name="source_code" type="String" />
+			<param index="1" name="compression" type="int" enum="BytecodeCompiler.CompressionMode" default="0" />
+			<description>	将给定的 GDScript 源码字符串编译为二进制 token 字节码。
+	[param source_code] 待编译的 GDScript 源码文本。
+	[param compression] 是否压缩生成的字节码，取值见 [code]CompressionMode[/code]。
+	[return] 生成的字节码；源码为空或 token 化失败时返回空字节数组。</description>
+		</method>
+		<method name="compile_from_script">
+			<return type="PackedByteArray" />
+			<param index="0" name="source_script" type="Script" />
+			<param index="1" name="compression" type="int" enum="BytecodeCompiler.CompressionMode" default="0" />
+			<description>	将脚本的源码编译为二进制 token 字节码。
+	[param source_script] 待编译的脚本，仅接受具有源码的 GDScript。</param>
+	[param compression] 是否压缩生成的字节码，取值见 [code]CompressionMode[/code]。
+	[return] 生成的字节码；脚本无效时返回空字节数组。</description>
+		</method>
+		<method name="compress">
+			<return type="PackedByteArray" />
+			<param index="0" name="bytecode" type="PackedByteArray" />
+			<description>	校验字节码头后，对其负载进行 Zstandard 压缩，只在编译时未压缩的情况下使用。
+	[param bytecode] 未经压缩的字节码。
+	[return] 压缩后的字节码；校验失败时返回空字节数组，已压缩时原样返回。</description>
+		</method>
+	</methods>
+	<constants>
+		<constant name="UNCOMPRESSED" value="0" enum="CompressionMode">
+			不压缩二进制 token，等价于导出选项「二进制 token（加载更快）」。
+		</constant>
+		<constant name="COMPRESSED" value="1" enum="CompressionMode">
+			使用 Zstandard 压缩二进制 token，等价于导出选项「压缩二进制 token（文件更小）」。
+		</constant>
+	</constants>
+</class>
