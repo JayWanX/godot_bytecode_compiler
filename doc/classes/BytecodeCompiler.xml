@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <class name="BytecodeCompiler" inherits="RefCounted" api_type="core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../class.xsd">
-	<brief_description>	将 GDScript 源码 token 化并打包为可执行的字节码，供脚本在运行时以二进制形式保存或加载。
-	该类只负责「源码 → 字节码」的编译以及「字节码 → 压缩字节码」的打包，
-	并不负责执行字节码，编译结果可直接交给引擎的 GDScript 运行时消费。</brief_description>
+	<brief_description>
+		将 GDScript 源码 token 化并打包为可执行的字节码，供脚本在运行时以二进制形式保存或加载。
+		该类只负责「源码 → 字节码」的编译以及「字节码 → 压缩字节码」的打包，
+		并不负责执行字节码，编译结果可直接交给引擎的 GDScript 运行时消费。
+	</brief_description>
 	<description>
 	</description>
 	<tutorials>
